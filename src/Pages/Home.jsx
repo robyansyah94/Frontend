@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Home() {
   const [posts, setPosts] = useState([]);
@@ -34,6 +35,12 @@ export default function Home() {
                   {new Date(post.created_at).toLocaleTimeString()}
                 </small>
               </div>
+              <Link
+                to={`/posts/${post.id}`}
+                className="bg-blue-500 text-white text-sm rounded-lg px-3 py-1"
+              >
+                Read more
+              </Link>
             </div>
             <p>{post.body}</p>
           </div>
