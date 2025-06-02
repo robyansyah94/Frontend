@@ -4,13 +4,13 @@ import { AppContext } from "../Context/AppContext";
 
 export default function Layout() {
   const { user, token, setUser, setToken } = useContext(AppContext);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   async function handleLogout(e) {
     e.preventDefault();
 
     const res = await fetch("/api/logout", {
-      method:'post',
+      method: "post",
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -38,6 +38,9 @@ export default function Layout() {
           {user ? (
             <div className="flex items-center space-x-4">
               <p className="text-slate-400 text-xs">Welcome back {user.name}</p>
+              <Link to="/create" className="nav-link">
+                New Post
+              </Link>
               <form onSubmit={handleLogout}>
                 <button className="nav-link">Logout</button>
               </form>
